@@ -1,0 +1,17 @@
+wordpress:
+        image: wordpress
+        links:
+        - mariadb:mysql
+        environment:
+        - WORDPRESS_DB_PASSWORD="contrasea_wp"
+        ports:
+        - 8093:80
+        volumes:
+        - datawp:/var/www/html
+mariadb:
+        image: mariadb
+        environment:
+        - MYSQL_ROOT_PASSWORD="contrasea_wp"
+        - MYSQL_DATABASE="wordpress_dev"
+        volumes:
+        - databasewp_dev:/var/lib/mysql
